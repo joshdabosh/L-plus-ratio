@@ -6,6 +6,7 @@ const pathVariants = {
   hidden: {
     opacity: 0,
     pathLength: 0,
+    scale: 1,
   },
   visible: {
     opacity: 1,
@@ -17,7 +18,21 @@ const pathVariants = {
   },
 }
 
-const BigL = () => {
+const shrinkVariants = {
+  hidden: {
+    scale: 1,
+  },
+  visible: {
+    scale: 0.4,
+    transition: {
+      duration: 1.75,
+      delay: 2.5,
+      ease: 'easeInOut',
+    },
+  },
+}
+
+const BigL = ({ props }) => {
   return (
     <motion.svg
       width="238"
@@ -27,15 +42,17 @@ const BigL = () => {
       xmlns="http://www.w3.org/2000/svg"
       initial="hidden"
       animate="visible"
+      variants={shrinkVariants}
+      {...props}
     >
       <motion.path
-        d="M 12.5,299 L 2.5,357.5 H 224.5 L 235,299 H 157.5"
+        d="M 12.5,299 L 64,2.5 H 135.5 L 84,299 H 159.5"
         stroke="white"
         strokeWidth="4"
         variants={pathVariants}
       />
       <motion.path
-        d="M 12.5,299 L 64,2.5 H 135.5 L 84,299 H 159.5"
+        d="M 12.5,299 L 2.5,357.5 H 224.5 L 235,299 H 158.5"
         stroke="white"
         strokeWidth="4"
         variants={pathVariants}
