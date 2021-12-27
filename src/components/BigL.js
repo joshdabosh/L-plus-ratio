@@ -6,7 +6,6 @@ const pathVariants = {
   hidden: {
     opacity: 0,
     pathLength: 0,
-    scale: 1,
   },
   visible: {
     opacity: 1,

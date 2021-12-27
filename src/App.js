@@ -1,11 +1,10 @@
 import { Center, Heading, Flex, Box } from '@chakra-ui/react'
 
-import { useColorMode } from '@chakra-ui/react'
-
-import theme from './theme'
+import { motion } from 'framer-motion'
 
 import BigL from './components/BigL'
-import { motion } from 'framer-motion'
+import TwitterLinkHolder from './components/TwitterLinkHolder'
+import GenerateButton from './components/GenerateButton'
 
 const shrinkVariants = {
   big: {
@@ -57,7 +56,6 @@ function App() {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh',
-          overflow: 'hidden',
           flexDirection: 'column',
         }}
       >
@@ -71,7 +69,18 @@ function App() {
             justifyContent: 'center',
           }}
         >
-          <Heading>Hello</Heading>
+          <Flex
+            sx={{
+              flexDirection: 'row',
+              width: '100%',
+              height: '100%',
+              justifyContent: 'space-around',
+            }}
+          >
+            <TwitterLinkHolder />
+
+            <GenerateButton />
+          </Flex>
         </motion.div>
       </Flex>
     </>
