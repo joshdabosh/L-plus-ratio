@@ -4,14 +4,14 @@ import { FaTwitter } from 'react-icons/fa'
 
 const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
   return (
-    <Stack direction="row" spacing={4} w="80%">
+    <Stack direction='row' spacing={4} w='80%'>
       {children}
       <Box>
         <Button
           rightIcon={<FaTwitter />}
-          colorScheme="white"
-          variant="outline"
-          borderWidth="2px"
+          colorScheme='white'
+          variant='outline'
+          borderWidth='2px'
           _focus={{ color: 'orange.200' }}
           onClick={clickHandler}
           disabled={disabled}

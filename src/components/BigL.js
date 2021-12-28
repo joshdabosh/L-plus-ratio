@@ -55,8 +55,8 @@ const shrinkVariants = {
 const BigL = ({ props }) => {
   return (
     <motion.div
-      initial="big"
-      animate="normal"
+      initial='big'
+      animate='normal'
       variants={translateVariants}
       style={{
         width: '100%',
@@ -66,26 +66,26 @@ const BigL = ({ props }) => {
       }}
     >
       <motion.svg
-        width="238"
-        height="359"
-        viewBox="0 0 238 359"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        initial="hidden"
-        animate="visible"
+        width='238'
+        height='359'
+        viewBox='0 0 238 359'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        initial='hidden'
+        animate='visible'
         variants={shrinkVariants}
         {...props}
       >
         <motion.path
-          d="M 12.5,299 L 64,2.5 H 135.5 L 84,299 H 159.5"
-          strokeWidth="4"
-          stroke="#ffffff"
+          d='M 12.5,299 L 64,2.5 H 135.5 L 84,299 H 159.5'
+          strokeWidth='4'
+          stroke='#ffffff'
           variants={pathVariants}
         />
         <motion.path
-          d="M 12.5,299 L 2.5,357.5 H 224.5 L 235,299 H 158.5"
-          stroke="#ffffff"
-          strokeWidth="4"
+          d='M 12.5,299 L 2.5,357.5 H 224.5 L 235,299 H 158.5'
+          stroke='#ffffff'
+          strokeWidth='4'
           variants={pathVariants}
         />
       </motion.svg>

@@ -19,8 +19,8 @@ const fadeInVariants = {
 const FadeIn = ({ children }) => {
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
+      initial='hidden'
+      animate='visible'
       variants={fadeInVariants}
       style={{
         width: '100%',

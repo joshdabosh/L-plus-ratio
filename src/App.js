@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import { Center, Heading, Flex, Box } from '@chakra-ui/react'
+import { Center, Heading, Flex, Box, toast } from '@chakra-ui/react'
 
-import { Input } from '@chakra-ui/react'
+import { Input, useToast } from '@chakra-ui/react'
 
 import { motion } from 'framer-motion'
 
@@ -11,6 +11,10 @@ import { useForm } from 'react-hook-form'
 import BigL from './components/BigL'
 import TwitterLinkHolder from './components/TwitterLinkHolder'
 import FadeIn from './components/FadeIn'
+
+import generateReply from './util/generateReply'
+
+const twitterStatusRegex = /^https?:\/\/twitter\.com\/.*?status\/(\d+)$/
 
 const App = () => {
   const {
@@ -24,12 +28,30 @@ const App = () => {
     },
   })
 
-  const twitterStatusRegex = /^https?:\/\/twitter\.com\/.*?status\/(\d+)$/
+  const sendToast = useToast()
 
   const generateTweet = ({ status_url }) => {
     const status_id = status_url.match(twitterStatusRegex)[1]
 
-    console.log(status_id)
+    const openLink = window.open(
+      `https://twitter.com/intent/tweet?in_reply_to=${status_id}&text=${encodeURIComponent(
+        generateReply()
+      )}`,
+      '_blank'
+    )
+
+    if (openLink) {
+      openLink.focus()
+    } else {
+      console.log(1)
+      sendToast({
+        title: 'Error opening new tab',
+        description: 'You hate to see it happen.',
+        status: 'error',
+        duration: 2500,
+        isClosable: true,
+      })
+    }
   }
 
   return (
@@ -59,8 +81,8 @@ const App = () => {
             >
               <Box w={['80%', '100%']}>
                 <Input
-                  placeholder="Twitter Link"
-                  borderWidth="2px"
+                  placeholder='Twitter Link'
+                  borderWidth='2px'
                   _focus={{
                     outline: 'none',
                     borderColor: 'orange.200',
