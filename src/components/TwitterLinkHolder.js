@@ -1,5 +1,4 @@
-import { Flex, Box, Stack } from '@chakra-ui/layout'
-import { Button } from '@chakra-ui/react'
+import { Flex, Box, Stack, Button } from '@chakra-ui/react'
 import { FaTwitter } from 'react-icons/fa'
 
 const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
@@ -13,6 +12,9 @@ const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
           variant='outline'
           borderWidth='2px'
           _focus={{ color: 'orange.200' }}
+          _hover={{
+            color: 'orange.200',
+          }}
           onClick={clickHandler}
           disabled={disabled}
         >

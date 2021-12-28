@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form'
 import BigL from './components/BigL'
 import TwitterLinkHolder from './components/TwitterLinkHolder'
 import FadeIn from './components/FadeIn'
+import Footer from './components/Footer'
 
 import generateReply from './util/generateReply'
 
@@ -97,6 +98,15 @@ const App = () => {
           </Flex>
         </FadeIn>
       </Flex>
+
+      <FadeIn
+        style={{
+          position: 'absolute',
+          bottom: 0,
+        }}
+      >
+        <Footer />
+      </FadeIn>
     </>
   )
 }

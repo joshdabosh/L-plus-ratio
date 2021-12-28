@@ -16,7 +16,7 @@ const fadeInVariants = {
   },
 }
 
-const FadeIn = ({ children }) => {
+const FadeIn = ({ children, style }) => {
   return (
     <motion.div
       initial='hidden'
@@ -26,6 +26,7 @@ const FadeIn = ({ children }) => {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
+        ...style,
       }}
     >
       {children}
