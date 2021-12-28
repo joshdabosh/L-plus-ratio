@@ -54,21 +54,17 @@ const App = () => {
       <BigL />
 
       <Flex
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          flexDirection: 'column',
-        }}
+        justify='center'
+        align='center'
+        height='100vh'
+        flexDirection='column'
       >
         <FadeIn>
           <Flex
-            sx={{
-              flexDirection: 'row',
-              width: '100%',
-              height: '100%',
-              justifyContent: 'space-around',
-            }}
+            flexDirection='row'
+            width='100%'
+            height='100%'
+            justify='space-around'
           >
             <TwitterLinkHolder
               clickHandler={handleSubmit(generateTweet)}
