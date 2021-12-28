@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
 
-import theme from '../theme'
-
 const translateVariants = {
   big: {
     top: 'calc(50vh - 170px)',

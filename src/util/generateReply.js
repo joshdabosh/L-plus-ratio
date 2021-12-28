@@ -37,11 +37,48 @@ const LOGICAL_ARGUMENTS = [
   'ratio agian',
   'final ratio',
   'problematic',
+  'ratio',
 ]
 
 const BASE_AMOUNT = 7
 
 const capitalize = (s) => s[0].toUpperCase() + s.slice(1)
+
+const orderRatios = (arr) => {
+  let indices = [-1, -1, -1]
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 'ratio') {
+      indices[0] = i
+    } else if (arr[i] === 'ratio agian') {
+      indices[1] = i
+    } else if (arr[i] === 'final ratio') {
+      indices[2] = i
+    }
+  }
+
+  indices.sort()
+
+  let count = 0
+
+  while (indices.length > 0) {
+    const idx = indices.shift()
+
+    if (idx === -1) continue
+
+    if (count === 0) {
+      arr[idx] = 'ratio'
+    } else if (count === 1) {
+      arr[idx] = 'ratio agian'
+    } else if (count === 2) {
+      arr[idx] = 'final ratio'
+    }
+
+    count++
+  }
+
+  return arr
+}
 
 const generateReply = () => {
   const amount =
@@ -50,13 +87,11 @@ const generateReply = () => {
 
   const selection = _.sample(LOGICAL_ARGUMENTS, amount)
 
-  selection.push('ratio')
-
   while (selection.join(' + ').length >= 280) {
     selection.shift()
   }
 
-  return capitalize(selection.join(' + '))
+  return capitalize(orderRatios(selection).join(' + '))
 }
 
 export default generateReply

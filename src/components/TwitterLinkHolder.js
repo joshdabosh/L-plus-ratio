@@ -1,4 +1,4 @@
-import { Flex, Box, Stack, Button } from '@chakra-ui/react'
+import { Box, Stack, Button } from '@chakra-ui/react'
 import { FaTwitter } from 'react-icons/fa'
 
 const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {

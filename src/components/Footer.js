@@ -1,4 +1,4 @@
-import { Box, Stack, Text, Center, Link } from '@chakra-ui/react'
+import { Box, Center, Link } from '@chakra-ui/react'
 import { FaGithub } from 'react-icons/fa'
 
 const Footer = () => {

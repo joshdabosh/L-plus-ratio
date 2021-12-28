@@ -1,10 +1,4 @@
-import { useState } from 'react'
-
-import { Center, Heading, Flex, Box, toast } from '@chakra-ui/react'
-
-import { Input, useToast } from '@chakra-ui/react'
-
-import { motion } from 'framer-motion'
+import { Flex, Box, Input, useToast } from '@chakra-ui/react'
 
 import { useForm } from 'react-hook-form'
 
