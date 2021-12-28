@@ -1,7 +1,7 @@
 import _ from 'underscore'
 
 const LOGICAL_ARGUMENTS = [
-  "Don't care",
+  "don't care",
   "didn't ask",
   'cry about it',
   'stay mad',
@@ -41,6 +41,8 @@ const LOGICAL_ARGUMENTS = [
 
 const BASE_AMOUNT = 7
 
+const capitalize = (s) => s[0].toUpperCase() + s.slice(1)
+
 const generateReply = () => {
   const amount =
     Math.floor(Math.random() * (LOGICAL_ARGUMENTS.length - BASE_AMOUNT)) +
@@ -54,7 +56,7 @@ const generateReply = () => {
     selection.shift()
   }
 
-  return selection.join(' + ')
+  return capitalize(selection.join(' + '))
 }
 
 export default generateReply
