@@ -1,24 +1,11 @@
 import { Flex, Box, Stack } from '@chakra-ui/layout'
-import { Input, Button } from '@chakra-ui/react'
-import { Icon } from '@chakra-ui/icons'
+import { Button } from '@chakra-ui/react'
 import { FaTwitter } from 'react-icons/fa'
 
-const TwitterLinkHolder = () => {
+const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
   return (
     <Stack direction="row" spacing={4} w="80%">
-      <Box w={['80%', '100%']}>
-        <Input
-          placeholder="Twitter Link"
-          borderWidth="2px"
-          _focus={{
-            outline: 'none',
-            borderColor: 'orange.200',
-          }}
-          _hover={{
-            borderColor: 'orange.200',
-          }}
-        />
-      </Box>
+      {children}
       <Box>
         <Button
           rightIcon={<FaTwitter />}
@@ -26,6 +13,8 @@ const TwitterLinkHolder = () => {
           variant="outline"
           borderWidth="2px"
           _focus={{ color: 'orange.200' }}
+          onClick={clickHandler}
+          disabled={disabled}
         >
           Tweet!
         </Button>

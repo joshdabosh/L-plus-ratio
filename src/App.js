@@ -1,57 +1,40 @@
+import { useState } from 'react'
+
 import { Center, Heading, Flex, Box } from '@chakra-ui/react'
+
+import { Input } from '@chakra-ui/react'
 
 import { motion } from 'framer-motion'
 
+import { useForm } from 'react-hook-form'
+
 import BigL from './components/BigL'
 import TwitterLinkHolder from './components/TwitterLinkHolder'
-import theme from './theme'
+import FadeIn from './components/FadeIn'
 
-const shrinkVariants = {
-  big: {
-    top: 'calc(50vh - 170px)',
-  },
-  normal: {
-    top: 'calc(20vh - 170px)',
-    transition: {
-      duration: 1.75,
-      delay: 2.5,
-      ease: 'easeInOut',
+const App = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid, isDirty },
+  } = useForm({
+    mode: 'onChange',
+    defaultValues: {
+      status_url: '',
     },
-  },
-}
+  })
 
-const fadeInVariants = {
-  hidden: {
-    opacity: 0,
-    display: 'none',
-  },
-  visible: {
-    opacity: 1,
-    display: 'inline',
-    transition: {
-      duration: 0.5,
-      delay: 4.25,
-      ease: 'easeInOut',
-    },
-  },
-}
+  const twitterStatusRegex = /^https?:\/\/twitter\.com\/.*?status\/(\d+)$/
 
-function App() {
+  const generateTweet = ({ status_url }) => {
+    const status_id = status_url.match(twitterStatusRegex)[1]
+
+    console.log(status_id)
+  }
+
   return (
     <>
-      <motion.div
-        initial="big"
-        animate="normal"
-        variants={shrinkVariants}
-        style={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          position: 'absolute',
-        }}
-      >
-        <BigL />
-      </motion.div>
+      <BigL />
 
       <Flex
         sx={{
@@ -61,16 +44,7 @@ function App() {
           flexDirection: 'column',
         }}
       >
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeInVariants}
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+        <FadeIn>
           <Flex
             sx={{
               flexDirection: 'row',
@@ -79,9 +53,27 @@ function App() {
               justifyContent: 'space-around',
             }}
           >
-            <TwitterLinkHolder />
+            <TwitterLinkHolder
+              clickHandler={handleSubmit(generateTweet)}
+              disabled={!isValid || !isDirty}
+            >
+              <Box w={['80%', '100%']}>
+                <Input
+                  placeholder="Twitter Link"
+                  borderWidth="2px"
+                  _focus={{
+                    outline: 'none',
+                    borderColor: 'orange.200',
+                  }}
+                  _hover={{
+                    borderColor: 'orange.200',
+                  }}
+                  {...register('status_url', { pattern: twitterStatusRegex })}
+                />
+              </Box>
+            </TwitterLinkHolder>
           </Flex>
-        </motion.div>
+        </FadeIn>
       </Flex>
     </>
   )
