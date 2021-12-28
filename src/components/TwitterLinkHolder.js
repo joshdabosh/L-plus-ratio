@@ -1,24 +1,36 @@
-import { Flex, Box } from '@chakra-ui/layout'
+import { Flex, Box, Stack } from '@chakra-ui/layout'
+import { Input, Button } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
 import { FaTwitter } from 'react-icons/fa'
 
 const TwitterLinkHolder = () => {
   return (
-    <Flex
-      sx={{
-        flexDirection: 'column',
-        width: '100%',
-        justifyContent: 'center',
-      }}
-    >
-      <Box
-        sx={{
-          textAlign: 'center',
-        }}
-      >
-        <Icon as={FaTwitter} w={7} h={7} />
+    <Stack direction="row" spacing={4} w="80%">
+      <Box w={['80%', '100%']}>
+        <Input
+          placeholder="Twitter Link"
+          borderWidth="2px"
+          _focus={{
+            outline: 'none',
+            borderColor: 'orange.200',
+          }}
+          _hover={{
+            borderColor: 'orange.200',
+          }}
+        />
       </Box>
-    </Flex>
+      <Box>
+        <Button
+          rightIcon={<FaTwitter />}
+          colorScheme="white"
+          variant="outline"
+          borderWidth="2px"
+          _focus={{ color: 'orange.200' }}
+        >
+          Tweet!
+        </Button>
+      </Box>
+    </Stack>
   )
 }
 

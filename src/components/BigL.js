@@ -6,13 +6,20 @@ const pathVariants = {
   hidden: {
     opacity: 0,
     pathLength: 0,
+    stroke: '#fbd38d',
   },
   visible: {
     opacity: 1,
     pathLength: 1,
+    stroke: '#ffffff',
     transition: {
       duration: 2.5,
       ease: 'anticipate',
+      stroke: {
+        duration: 1.75,
+        delay: 2.5,
+        ease: 'easeInOut',
+      },
     },
   },
 }
@@ -46,13 +53,13 @@ const BigL = ({ props }) => {
     >
       <motion.path
         d="M 12.5,299 L 64,2.5 H 135.5 L 84,299 H 159.5"
-        stroke="white"
         strokeWidth="4"
+        stroke="#ffffff"
         variants={pathVariants}
       />
       <motion.path
         d="M 12.5,299 L 2.5,357.5 H 224.5 L 235,299 H 158.5"
-        stroke="white"
+        stroke="#ffffff"
         strokeWidth="4"
         variants={pathVariants}
       />

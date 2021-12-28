@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 import BigL from './components/BigL'
 import TwitterLinkHolder from './components/TwitterLinkHolder'
-import GenerateButton from './components/GenerateButton'
+import theme from './theme'
 
 const shrinkVariants = {
   big: {
@@ -23,9 +23,11 @@ const shrinkVariants = {
 const fadeInVariants = {
   hidden: {
     opacity: 0,
+    display: 'none',
   },
   visible: {
     opacity: 1,
+    display: 'inline',
     transition: {
       duration: 0.5,
       delay: 4.25,
@@ -78,8 +80,6 @@ function App() {
             }}
           >
             <TwitterLinkHolder />
-
-            <GenerateButton />
           </Flex>
         </motion.div>
       </Flex>
