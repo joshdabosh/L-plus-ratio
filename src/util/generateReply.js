@@ -57,7 +57,7 @@ const orderRatios = (arr) => {
     }
   }
 
-  indices.sort()
+  indices.sort((a, b) => a - b)
 
   let count = 0
 

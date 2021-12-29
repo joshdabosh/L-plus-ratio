@@ -72,7 +72,7 @@ const App = () => {
             >
               <Box w={['80%', '100%']}>
                 <Input
-                  placeholder='Twitter Link'
+                  placeholder='Twitter Status URL'
                   borderWidth='2px'
                   _focus={{
                     outline: 'none',
