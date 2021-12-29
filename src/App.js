@@ -61,18 +61,19 @@ const App = () => {
       >
         <FadeIn>
           <Flex
-            flexDirection='row'
+            flexDirection={['column', 'column', 'row']}
             width='100%'
             height='100%'
             justify='space-around'
+            align='center'
           >
             <TwitterLinkHolder
               clickHandler={handleSubmit(generateTweet)}
               disabled={!isValid || !isDirty}
             >
-              <Box w={['80%', '100%']}>
+              <Box w={['100%', '100%', '80%']}>
                 <Input
-                  placeholder='Twitter Status URL'
+                  placeholder='https://twitter.com/xxx/status/yyy'
                   borderWidth='2px'
                   _focus={{
                     outline: 'none',

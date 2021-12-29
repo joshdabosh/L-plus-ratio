@@ -3,7 +3,7 @@ import { FaTwitter } from 'react-icons/fa'
 
 const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
   return (
-    <Stack direction='row' spacing={4} w='80%'>
+    <Stack direction={['column', 'column', 'row']} spacing={4} w='80%'>
       {children}
       <Box>
         <Button
@@ -17,6 +17,7 @@ const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
           }}
           onClick={clickHandler}
           disabled={disabled}
+          width={['100%', '100%', null]}
         >
           Tweet!
         </Button>
