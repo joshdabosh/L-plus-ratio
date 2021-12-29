@@ -5,7 +5,7 @@ const TwitterLinkHolder = ({ children, clickHandler, disabled }) => {
   return (
     <Stack direction={['column', 'column', 'row']} spacing={4} w='80%'>
       {children}
-      <Box>
+      <Box flex={1}>
         <Button
           rightIcon={<FaTwitter />}
           colorScheme='white'

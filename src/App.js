@@ -71,9 +71,11 @@ const App = () => {
               clickHandler={handleSubmit(generateTweet)}
               disabled={!isValid || !isDirty}
             >
-              <Box w={['100%', '100%', '80%']}>
+              <Box w={['100%', '100%', '85%']}>
                 <Input
                   placeholder='https://twitter.com/xxx/status/yyy'
+                  color='white'
+                  borderColor='white'
                   borderWidth='2px'
                   _focus={{
                     outline: 'none',
@@ -81,6 +83,9 @@ const App = () => {
                   }}
                   _hover={{
                     borderColor: 'orange.200',
+                  }}
+                  _placeholder={{
+                    color: 'gray.300',
                   }}
                   {...register('status_url', { pattern: twitterStatusRegex })}
                 />
