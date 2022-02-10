@@ -45,41 +45,51 @@ const LOGICAL_ARGUMENTS = [
 
 const BASE_AMOUNT = 7
 
+// limitation: each entry may only be in one list
+const ORDERED_RATIOS = [
+  ['ratio', 'ratio agian', 'final ratio'],
+  ['GG!', 'skill issue'],
+  ['ok', 'and?'],
+]
+// Map<entry, [listId, order]>
+const ORDERED_RATIOS_MAP = new Map(
+  ORDERED_RATIOS.flatMap((list, listIndex) =>
+    [...list.entries()].map(([index, value]) => [value, [listIndex, index]])
+  )
+)
+
 const capitalize = (s) => s[0].toUpperCase() + s.slice(1)
 
 const orderRatios = (arr) => {
-  let indices = [-1, -1, -1]
-
+  let indices = new Map()
+  let ordered = new Map()
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 'ratio') {
-      indices[0] = i
-    } else if (arr[i] === 'ratio agian') {
-      indices[1] = i
-    } else if (arr[i] === 'final ratio') {
-      indices[2] = i
+    let entry = ORDERED_RATIOS_MAP.get(arr[i])
+    if (entry) {
+      const listId = entry[0]
+      let indexList = indices.get(listId)
+      if (!indexList) {
+        indexList = []
+        indices.set(listId, indexList)
+      }
+      indexList.push(i)
+
+      let orderList = ordered.get(listId)
+      if (!orderList) {
+        orderList = []
+        ordered.set(listId, orderList)
+      }
+      orderList.push([arr[i], entry[1]])
     }
   }
-
-  indices.sort((a, b) => a - b)
-
-  let count = 0
-
-  while (indices.length > 0) {
-    const idx = indices.shift()
-
-    if (idx === -1) continue
-
-    if (count === 0) {
-      arr[idx] = 'ratio'
-    } else if (count === 1) {
-      arr[idx] = 'ratio agian'
-    } else if (count === 2) {
-      arr[idx] = 'final ratio'
+  for (let [listId, indexList] of indices) {
+    let orderList = ordered.get(listId)
+    if (orderList.length <= 1) continue
+    orderList.sort((a, b) => a[1] - b[1])
+    for (let idx of indexList) {
+      arr[idx] = orderList.shift()[0]
     }
-
-    count++
   }
-
   return arr
 }
 
