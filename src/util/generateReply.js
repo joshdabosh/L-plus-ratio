@@ -38,6 +38,9 @@ const LOGICAL_ARGUMENTS = [
   'final ratio',
   'problematic',
   'ratio',
+  'hedge-born',
+  'unchivalrous',
+  'thou hath the plague',
 ]
 
 const BASE_AMOUNT = 7
