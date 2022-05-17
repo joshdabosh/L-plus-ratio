@@ -1,4 +1,4 @@
-import { Flex, Box, Input, useToast, Select, Image } from '@chakra-ui/react'
+import { Flex, Box, Input, useToast, Select } from '@chakra-ui/react'
 
 import { useForm } from 'react-hook-form'
 
