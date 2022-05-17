@@ -38,9 +38,20 @@ const LOGICAL_ARGUMENTS = [
   'final ratio',
   'problematic',
   'ratio',
+]
+
+const SHAKESPEARE = [
+  'peasant',
   'hedge-born',
   'unchivalrous',
   'thou hath the plague',
+]
+const PIRATE = [
+  'plundered',
+  'plundered',
+  'no wenches',
+  'marooned',
+  'you have scurvy',
 ]
 
 const BASE_AMOUNT = 7
@@ -51,6 +62,7 @@ const ORDERED_RATIOS = [
   ['GG!', 'skill issue'],
   ['ok', 'and?'],
 ]
+
 // Map<entry, [listId, order]>
 const ORDERED_RATIOS_MAP = new Map(
   ORDERED_RATIOS.flatMap((list, listIndex) =>
@@ -93,12 +105,26 @@ const orderRatios = (arr) => {
   return arr
 }
 
-const generateReply = () => {
-  const amount =
-    Math.floor(Math.random() * (LOGICAL_ARGUMENTS.length - BASE_AMOUNT)) +
-    BASE_AMOUNT
+const generateReply = (mode) => {
+  let arr = LOGICAL_ARGUMENTS
 
-  const selection = _.sample(LOGICAL_ARGUMENTS, amount)
+  switch (mode) {
+    case 'shake':
+      arr = arr.concat(SHAKESPEARE)
+      break
+    case 'pirate':
+      arr = arr.concat(PIRATE)
+      break
+    default:
+      break
+  }
+
+  console.log(arr)
+
+  const amount =
+    Math.floor(Math.random() * (arr.length - BASE_AMOUNT)) + BASE_AMOUNT
+
+  const selection = _.sample(arr, amount)
 
   while (selection.join(' + ').length >= 280) {
     selection.shift()
